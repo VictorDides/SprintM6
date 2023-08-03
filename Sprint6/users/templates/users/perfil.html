@@ -1,0 +1,43 @@
+{% extends "Pagina/base.html" %}
+{% block contenido %}
+<div class="content-section">
+    <div class="media">
+        <div class="row">
+            <div class="col-2">
+            
+                <img class ="rounded-circle account-img" style="width: 200px; height: 200px" src="{{ user.perfil.imagen.url }}" alt="imagen no disponible">
+                
+            </div>
+            <div class="col">
+                <div class="media-body">
+                    <h2> Bienvenido a tu perfil {{user.username}}</h2>
+                    <p class="text-secondary">{{user.email}}</p>
+                </div>
+                {% for group in user.groups.all %}
+                    <p>{{group.name}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="dropdown">
+
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownButton"  data-bs-toggle="dropdown" aria-expanded="false" >
+            Actualizar Perfil
+        </button>
+        <div class="dropdown-menu">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{formulario_perfil}}
+                </div>
+                <button type="submit"> Actualizar</button>
+            </form>
+        </div>
+    </div>
+    
+    
+</div>
+<div>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+</div>
+{% endblock %}

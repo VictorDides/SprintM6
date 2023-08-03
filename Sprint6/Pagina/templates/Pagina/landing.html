@@ -1,0 +1,38 @@
+{% extends "Pagina/base.html" %}
+{% load static %}
+{% block contenido %}
+<div>
+    <div class="titulo_index">
+        <h1> Ultimas publicaciones</h1>
+    </div>
+    <br>
+    {% if messages %}
+        {% for mensaje in messages %}
+            <div class="alert alert-success col-4 md-8" role="alert">
+                {{mensaje}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div>
+        {% for publicacion in publicacionesLlave %}
+        <div class="card text-center">
+            <div class="card-header">
+                {{publicacion.nombre}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{publicacion.nombre}}</h5>
+              <p class="card-text">{{publicacion.proveedor}}</p>
+              <p class="card-text">{{publicacion.precio}}</p>
+            </div>
+            <div class="card-footer text-muted">
+                {{publicacion.stock}}
+            </div>
+        </div>
+    </div>
+   
+        
+
+    {% endfor %}
+    
+</div>
+{% endblock contenido %}

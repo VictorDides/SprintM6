@@ -1,0 +1,12 @@
+{% extends "Pagina/base.html" %}
+{% block contenido %}
+<div style="display:flex">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{formulario}}
+        </div>
+        <button type="submit" class="btn btn-success">Registrarse</button>
+    </form>
+</div>
+{% endblock %}

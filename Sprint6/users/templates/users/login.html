@@ -1,0 +1,17 @@
+{% extends "Pagina/base.html" %}
+{% block contenido %}
+<div style="display:flex">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form}}
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+    <div>
+        <small>
+            Si no tienes cuenta? <a href="{% url 'registro' %}">Registrate</a> <!--el nombre registro sale del nombre puetso en url.py-->
+        </small>
+    </div>
+</div>
+{% endblock %}
