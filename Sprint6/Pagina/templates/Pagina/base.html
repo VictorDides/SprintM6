@@ -5,41 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Te Lo Vendo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet"  type="text/css" href="{% static 'Pagina/index.css' %}">
 </head>
-<body class="container-fluid align-items-center text-center">
-    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-        <div class="bg-dark p-4">
-          <h5 class="text-body-emphasis h4">Aun sin contenido desplegable :'(</h5>
-          <span class="text-body-secondary">Nada que togglear</span>
-        </div>
-      </div>
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </nav>
+<body class="container-fluid align-items-center text-center"">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'landing' %}">Te Lo Vendo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav" style="background-color: #e3f2fd;">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'landing' %}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registro' %}">Registro</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
       <div class="contenido">
-        </div>
         {% block contenido %} {% endblock %}
+      </div>
+      <br>
       
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-  <p class="col-md-4 mb-0 text-body-secondary">© 2023 Sidney - Victor - Alvaro - Ivan</p>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<footer style="margin: 10px;" class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+  <p class="col-md-4 mb-0 text-body-secondary justify-content-center">© 2023 Sidney - Victor - Alvaro - Ivan</p>
 
   <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
   </a>
-
-  <ul class="nav col-md-4 justify-content-end">
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Inicio</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Perfil</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sobre Nosotros</a></li>
-  </ul>
 </footer>
 </body>
 </html>

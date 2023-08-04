@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Pagina.apps.PaginaConfig',
     'users.apps.UsersConfig',
+    'crispy_forms',
+    
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,9 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SIGNALS = {
+    'post_save': {
+        'user': 'users.signals.crear_perfil',
+    }
+}

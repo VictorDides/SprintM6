@@ -2,11 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import RegistroUsuarioForm, ActualizarPerfilForm
+from .models import Perfil
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-
-# Create your views here.
 
 def registro(request):
     if request.method == "POST":
@@ -20,6 +19,7 @@ def registro(request):
             messages.error("Error de Registro")
     formulario = RegistroUsuarioForm()
     return render(request,'users/registro.html',{'formulario': formulario})
+
 
 @login_required
 def perfil(request):
